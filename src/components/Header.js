@@ -13,7 +13,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur-xl shadow-sm">
+    <header className="relative z-40 bg-secondary">
       <nav className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
         <a href="#home" className="flex items-center gap-3">
           <img
@@ -28,7 +28,7 @@ export default function Header() {
             <a
               key={link.name}
               href={link.href}
-              className="text-sm font-semibold uppercase tracking-[0.18em] text-dark/80 transition-colors hover:text-dark"
+              className="text-sm font-semibold uppercase tracking-[0.18em] text-primary transition-colors hover:text-primary/80"
             >
               {link.name}
             </a>
@@ -38,7 +38,7 @@ export default function Header() {
         <div className="hidden items-center gap-6 md:flex">
           <a
             href="#contact"
-            className="rounded-full bg-dark px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
+            className="rounded-full bg-dark/90 px-6 py-3 text-sm font-semibold text-white transition hover:bg-accent"
           >
             Book Free Consultation →
           </a>
@@ -47,12 +47,12 @@ export default function Header() {
         <div className="flex items-center gap-3 md:hidden">
           <a
             href="#contact"
-            className="rounded-full bg-dark px-4 py-2 text-sm font-semibold text-white"
+            className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-dark"
           >
-            Consult
+            Let's Talk
           </a>
           <button
-            className="p-2 text-dark hover:text-accent focus:outline-none"
+            className="p-2 text-primary hover:text-primary/80 focus:outline-none"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle Navigation Menu"
           >
@@ -69,13 +69,13 @@ export default function Header() {
         </div>
 
         {isMenuOpen && (
-          <div className="w-full md:hidden border-t border-slate-200 pt-4">
+          <div className="w-full md:hidden pt-4">
             <div className="flex flex-col gap-2">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="rounded-full px-4 py-3 text-sm font-semibold text-dark/80 transition hover:bg-slate-100"
+                  className="rounded-full px-4 py-3 text-sm font-semibold text-primary transition hover:bg-slate-100"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {link.name}
@@ -83,7 +83,7 @@ export default function Header() {
               ))}
               <a
                 href="#cart"
-                className="rounded-full px-4 py-3 text-sm font-semibold text-dark/80 transition hover:bg-slate-100"
+                className="rounded-full px-4 py-3 text-sm font-semibold text-primary transition hover:bg-slate-100"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Cart (0)

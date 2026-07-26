@@ -175,45 +175,44 @@ export default function HomePage() {
 
   return (
     <div id="home" className="w-full">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-secondary px-4 py-16 pt-24 text-white sm:px-6 md:px-8 lg:py-24">
-        <div className="mx-auto flex max-w-7xl flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
+      <section className="relative overflow-hidden bg-secondary px-4 pb-16 pt-24 text-white sm:px-6 md:px-8 lg:min-h-[840px] lg:py-24 lg:pt-36">
+        <div
+          className="relative mb-8 h-80 w-full rounded-[1.5rem] bg-contain bg-center bg-no-repeat sm:hidden"
+          style={{
+            backgroundImage: "url('/images/herobg(mob).png')",
+            backgroundPosition: 'center',
+          }}
+        />
+        <div
+          className="absolute inset-0 hidden bg-contain bg-center bg-no-repeat lg:block"
+          style={{
+            backgroundImage: "url('/images/herobg.png')",
+            backgroundPosition: 'right bottom',
+          }}
+        />
+        <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-2xl">
-            <div className="mb-10 flex items-center gap-3"></div>
-            <h1 className="text-4xl font-black uppercase leading-[0.95] tracking-[-0.025em] text-white sm:text-5xl md:text-[5rem]">
+            <h1 className="text-4xl font-black uppercase leading-[0.95] tracking-[-0.025em] text-primary sm:text-5xl md:text-[5rem]">
               Helping therapists & coaches
-              <span className="block font-serif italic text-5xl lowercase text-white sm:text-6xl md:text-[5.5rem]">
-                create brands 
-              </span>
-              that attract the right people.
-            </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/75 sm:text-xl">
-              Let’s create an online presence that feels thoughtful, trustworthy, and aligned with who you are.
+              <br></br>
+                 attract the <span className="mt-2 block font-serif italic text-4xl lowercase  text-primary sm:text-5xl md:text-[5.25rem]">RIGHT  </span> people
+            </h1> 
+            <p className="mt-8 max-w-xl text-base leading-8 text-white sm:text-lg">
+              Social Media Marketing | Web Design | Brand Strategy
             </p>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
+            <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 sm:px-8 sm:py-4 text-sm font-semibold text-[#1d3c73] transition hover:bg-slate-100"
+                className="inline-flex items-center justify-center rounded-full bg-accent px-5 py-3 text-sm font-semibold text-white transition hover:bg-dark/90 sm:px-8 sm:py-4"
               >
                 Book Free Consultation →
               </a>
               <a
                 href="#services"
-                className="inline-flex items-center justify-center rounded-full border border-white/25 bg-white/10 px-6 py-3 sm:px-8 sm:py-4 text-sm font-semibold text-white transition hover:bg-white/15"
+                className="inline-flex items-center justify-center rounded-full border border-primary/25 bg-primary/10 px-5 py-3 text-sm font-semibold text-primary transition hover:bg-primary/15 sm:px-8 sm:py-4"
               >
                 View Services
               </a>
-            </div>
-          </div>
-
-          <div className="relative mx-auto w-full max-w-lg overflow-hidden rounded-[2rem] border border-white/10 bg-white/10 p-4 shadow-[0_40px_70px_-45px_rgba(0,0,0,0.4)] backdrop-blur-md sm:p-5">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.16),_transparent_42%)]" />
-            <div className="relative overflow-hidden rounded-[1.75rem] border border-white/20 bg-white shadow-xl">
-              <img
-                src="/images/problem.jpg"
-                alt=""
-                className="h-full w-full object-cover"
-              />
             </div>
           </div>
         </div>
@@ -230,7 +229,6 @@ export default function HomePage() {
       <section className="bg-primary px-4 py-20 text-dark sm:px-6 md:px-8 lg:px-12">
         <div className="mx-auto max-w-6xl">
           <div className="text-center">
-            <p className="mb-4 text-sm uppercase tracking-[0.35em] text-dark/50">Why you need this</p>
             <h2 className="mx-auto max-w-3xl text-3xl font-black leading-tight sm:text-4xl md:text-5xl">
               Your online presence should feel as thoughtful as the work you do.
             </h2>

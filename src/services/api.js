@@ -1,3 +1,5 @@
+import emailjs from 'emailjs-com';
+
 const blogData = [
   {
     id: '1',
@@ -42,8 +44,36 @@ export const blog = {
 
 export const contact = {
   submit: async (form) => {
-    await new Promise((r) => setTimeout(r, 200));
-    // In a real app you'd POST to a server. Here we just resolve.
+    const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      throw new Error('EmailJS credentials are not configured.');
+    }
+
+    const templateParams = {
+      full_name: form.name || 'N/A',
+      email_address: form.email || 'N/A',
+      business_name: form.businessName || 'N/A',
+      domain_name: form.domain || 'N/A',
+      location_name: form.location || 'N/A',
+      project_type: form.projectType || 'N/A',
+      project_timeline: form.timeline || 'N/A',
+      additional_information: form.additionalInfo || 'N/A',
+      combined_message: [
+        `Full Name: ${form.name || 'N/A'}`,
+        `Email: ${form.email || 'N/A'}`,
+        `Business Name: ${form.businessName || 'N/A'}`,
+        `Domain: ${form.domain || 'N/A'}`,
+        `Location: ${form.location || 'N/A'}`,
+        `Project Type: ${form.projectType || 'N/A'}`,
+        `Timeline: ${form.timeline || 'N/A'}`,
+        `Additional Information: ${form.additionalInfo || 'N/A'}`,
+      ].join('\n'),
+    };
+
+    await emailjs.send(serviceId, templateId, templateParams, publicKey);
     return { status: 'ok' };
   },
 };
