@@ -195,7 +195,7 @@ export default function HomePage() {
             <h1 className="text-4xl font-black uppercase leading-[0.95] tracking-[-0.025em] text-primary sm:text-5xl md:text-[5rem]">
               Helping therapists & coaches
               <br></br>
-                 attract the <span className="mt-2 block font-serif italic text-4xl lowercase  text-primary sm:text-5xl md:text-[5.25rem]">RIGHT  </span> people
+                  <span className="mt-2 block font-serif italic text-4xl lowercase  text-primary sm:text-5xl md:text-[5.25rem]">attract </span> the right people
             </h1> 
             <p className="mt-8 max-w-xl text-base leading-8 text-white sm:text-lg">
               Social Media Marketing | Web Design | Brand Strategy
