@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #FEFBF4;
+  --color-cream-2: #FAF5E9;
+  --color-cream-3: #F3ECDB;
+  --color-ink: #2A1A16;
+  --color-ink-2: #4A2E27;
+  --color-ink-3: #8A7268;
+
+  /* Every dark/accent role in the site now resolves to this one brown family. */
+  --color-brown: #532D27;
+  --color-brown-hover: #3D211C;
+  --color-brown-light: #F3E4DF;
+
+  --color-butter: #F9DF77;
+  --color-butter-light: #F8E8AD;
+  --color-butter-hover: #F0CE4A;
+
+  --color-lavender: #EBDEFF;
+  --color-lavender-deep: #C9A3E8;
+  --color-blue-tint: #DAE6FE;
+  --color-pink-tint: #F8CFE8;
+
+  --color-line: #E9DED4;
+
+  /* Rust and navy now alias to the single brown family, kept for backwards compatibility
+     with existing bg-rust / text-navy classes so every dark element matches. */
+  --color-rust: var(--color-brown);
+  --color-rust-hover: var(--color-brown-hover);
+  --color-rust-light: var(--color-brown-light);
+  --color-navy: var(--color-brown);
+  --color-navy-hover: var(--color-brown-hover);
+  --color-navy-light: var(--color-brown-light);
+
+  --font-heading: var(--font-lora), Georgia, serif;
+  --font-body: var(--font-jakarta), system-ui, sans-serif;
+  --font-script: var(--font-script), cursive;
+
+  --shadow-card: 0 2px 20px rgba(0,0,0,.07);
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+  }
+  img {
+    max-width: 100%;
+    display: block;
+  }
+}
+
+@layer utilities {
+  .container-wide {
+    max-width: 1180px;
+    margin-inline: auto;
+    padding-inline: 24px;
+  }
+  .container-narrow {
+    max-width: 720px;
+    margin-inline: auto;
+    padding-inline: 24px;
+  }
+  .balance {
+    text-wrap: balance;
+  }
+}
+
+/* Reveal-on-scroll: default hidden state, JS adds .is-visible */
+.reveal {
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity .7s cubic-bezier(.16,.8,.3,1), transform .7s cubic-bezier(.16,.8,.3,1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+.reveal-delay-4 { transition-delay: .4s; }
+
+/* Checkered ribbon divider: clean single-row alternating stripe, no anti-aliasing artifacts */
+.divider-checkered {
+  height: 16px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--tile-color, var(--color-rust)) 0,
+    var(--tile-color, var(--color-rust)) 16px,
+    var(--tile-base, var(--color-cream)) 16px,
+    var(--tile-base, var(--color-cream)) 32px
+  );
+}
+
+/* Dotted frame */
+.frame-dotted {
+  border: 2px dashed var(--color-rust);
+  border-radius: 16px;
+}
+
+/* Slight scrapbook tilt */
+.tilt-left {
+  transform: rotate(-1.5deg);
+}
+.tilt-right {
+  transform: rotate(1.5deg);
+}
+
+/* Marquee */
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.3333%); }
+}
+.marquee-track {
+  animation: marquee-scroll 34s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Rotating hero word */
+.rotate-word {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .45s ease, transform .45s ease;
+}
+.rotate-word.is-current {
+  opacity: 1;
+  transform: translateY(0);
+}
+.rotate-word.is-leaving {
+  opacity: 0;
+  transform: translateY(-24px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
